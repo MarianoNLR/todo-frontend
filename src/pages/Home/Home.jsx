@@ -36,14 +36,14 @@ export function Home () {
     return (
         <>
             <main className="main-home">
-                <h1>Home</h1>
-                <Button variant="contained" color="success" onClick={(e) => toggleTaskForm(e)}>
+                <Button className="add-task-button" variant="contained" color="success" onClick={(e) => toggleTaskForm(e)}>
                 Nueva Tarea
                 </Button>
                 <div className="task-list-container">
                     {taskList.length > 0 ?
                         taskList.map((item, index) => (
-                            <TaskCard key={index} 
+                            <TaskCard key={index}
+                            id={item.id}
                             title={item.title}
                             description={item.description}
                             deadline={item.deadline}

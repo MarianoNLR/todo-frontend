@@ -2,11 +2,25 @@
     box-sizing: border-box;
 }
 
+.main-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    gap: 1rem;
+}
+
 .task-list-container {
-    background-color: aliceblue;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fill, 250px);
     gap: 5px;
     padding: 1rem;
+    width: 100%;
+    flex: 1;
+}
+
+.add-task-button {
+    align-self: flex-end;
 }
