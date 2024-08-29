@@ -11,17 +11,19 @@ export function Home () {
     const [loadingTaskList, setLoadingTaskList] = useState(true)
     const user = JSON.parse(window.localStorage.getItem('user'))
     useEffect(() => {
-        api.get('task/', {
-            headers: {
-                'Authorization': `Bearer ${user.token}`
-            }
-        })
-        .then(res => {
-            console.log(res)
-            setTaskList(res.data.taskList)
-            setLoadingTaskList(false)
-        }) 
-    }, [])
+        if (loadingTaskList) {
+            api.get('task/', {
+                headers: {
+                    'Authorization': `Bearer ${user.token}`
+                }
+            })
+            .then(res => {
+                setTaskList(res.data.taskList)
+                setLoadingTaskList(false)
+            }) 
+        }
+        
+    }, [loadingTaskList, user.token])
 
     const toggleTaskForm = () => {
         setTaskFormIsVisible(!taskFormIsVisible);
@@ -53,7 +55,10 @@ export function Home () {
                     <h3>No Hay Tareas</h3>
                     }
                 </div>
-                {taskFormIsVisible && <NewTaskForm setLoadingTaskList={setLoadingTaskList} user={user}></NewTaskForm>}
+                {taskFormIsVisible && 
+                    <NewTaskForm setLoadingTaskList={setLoadingTaskList} user={user} toogleTaskForm={toggleTaskForm}>
+                    </NewTaskForm>
+                }
             </main>
         </>
     )
