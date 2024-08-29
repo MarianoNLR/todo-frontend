@@ -1,4 +1,12 @@
+* {
+    box-sizing: border-box;
+}
+
 .task-list-container {
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+    gap: 5px;
     padding: 1rem;
-    margin: 1rem;
 }

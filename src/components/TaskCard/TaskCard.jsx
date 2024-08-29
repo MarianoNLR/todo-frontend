@@ -9,7 +9,12 @@ export function TaskCard (props) {
                 <div className="card-description-wrapper">
                     {props.description}
                 </div>
-                
+                <div className='card-deadline-wrapper'>
+                    {props.deadline.split("T")[0]}
+                </div>
+                <div className='card-footer-wrapper'>
+                    Subtareas: {props.subtasks.length}
+                </div>
             </div>
         </>
     )
@@ -17,5 +22,7 @@ export function TaskCard (props) {
 
 TaskCard.propTypes = {
     title: PropTypes.string,
-    description: PropTypes.string
+    description: PropTypes.string,
+    deadline: PropTypes.string,
+    subtasks: PropTypes.array
 }
