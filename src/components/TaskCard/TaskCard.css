@@ -1,0 +1,7 @@
+.task-card-wrapper {
+    background-color: red;
+    padding: 1rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+}
