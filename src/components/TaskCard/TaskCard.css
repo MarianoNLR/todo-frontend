@@ -3,18 +3,27 @@
 }
 
 .task-card-wrapper {
-    background-color: red;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    width: 200px;
     height: 250px;
     overflow: hidden;
-    background-color: transparent;
+    cursor: pointer;
+}
+
+.green {
+    background-color: green;
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.red {
+    background-color: red;
 }
 
 .card-title-wrapper {
-    background-color: antiquewhite;
     padding: 5px;
     font-weight: 600;
     color: black;
@@ -23,7 +32,6 @@
 
 .card-description-wrapper {
     flex: 1;
-    background-color: aqua;
     font-weight: 600;
     color: black;
     text-align: start;
@@ -31,12 +39,12 @@
 }
 
 .card-deadline-wrapper {
-    background-color: blueviolet;
     font-weight: 600;
     text-align: start;
     padding-left: 5px;
+    color: black;
 }
 
 .card-footer-wrapper {
-    background-color: brown;
+    color: black;
 }
