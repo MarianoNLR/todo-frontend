@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './NewTaskForm.css'
 import api from '../../../api.js'
 
-export function NewTaskForm ({setLoadingTaskList, user}) {
+export function NewTaskForm ({setLoadingTaskList, user, toogleTaskForm}) {
     const today = new Date().toISOString().split('T')[0]
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -24,6 +24,7 @@ export function NewTaskForm ({setLoadingTaskList, user}) {
         })
         .then(res => {
             setLoadingTaskList(true)
+            toogleTaskForm()
         })
         .catch(err => {
             console.log(err)
@@ -46,12 +47,18 @@ export function NewTaskForm ({setLoadingTaskList, user}) {
         setDeadline(e.target.value)
     }
 
+    const handleCloseForm = (e) => {
+        e.preventDefault()
+        toogleTaskForm()
+
+    }
+
     return (
         <>
             <div className='new-task-wrapper'>
                 <div className="new-task-container">
                     <form className="new-task-form">
-                        <div className='close-button-wrapper'><button className='close-button'>X</button></div>
+                        <div className='close-button-wrapper'><button className='close-button' onClick={(e) => handleCloseForm(e)}>X</button></div>
                         <h2>Nueva Tarea</h2>
                         <input type="text" placeholder='Titulo' onChange={e =>onChangeTitle(e)}/>
                         <textarea rows={5} name="description" id="description" placeholder='Descripcion de la tarea' onChange={e => onChangeDescription(e)}></textarea>
