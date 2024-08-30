@@ -1,0 +1,15 @@
+.subtask-card-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.185);
+    padding: 1rem;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid white;
+}
+
+.subtask-description-wrapper {
+    flex: 1;
+    text-align: start;
+}
