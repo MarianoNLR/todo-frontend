@@ -1,15 +1,14 @@
 import { useEffect, useState } from 'react'
 import './SubtaskList.css'
 import PropTypes from 'prop-types'
+import { SubtaskCard } from '../SubtaskCard/SubtaskCard'
 
 export function SubtaskList (props) {
     return (
         <>
-            <div>
+            <div className='subtask-list-container'>
                 {props.subtasks.map((item, index) => (
-                    <div key={index}>
-                        {item.description}
-                    </div>
+                    <SubtaskCard key={index} subtask={item}></SubtaskCard>
                 ))}
             </div>
         </>
