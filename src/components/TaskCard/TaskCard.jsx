@@ -1,23 +1,17 @@
 import PropTypes from 'prop-types'
 import './TaskCard.css'
-import { differenceInDays } from 'date-fns'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 export function TaskCard (props) {
     const navigate = useNavigate()
-    const getDifferenceDays = () => {
-        const difference = differenceInDays(new Date(props.deadline), new Date())
-        
-        if (difference >= 7) {
-            return "green"
-        }
-        else if (difference >= 3) {
-            return "yellow"
-        }
-        else {
-            return "red"
-        }
+    const BG = [
+        "linear-gradient(to right bottom, #7201dc, #954ce7, #b47bf0, #d0a8f8, #ead5ff)",
+        "linear-gradient(to right bottom, #7201dc, #8836e2, #9b55e8, #ad70ed, #be8bf2)",
+        "linear-gradient(to right bottom, #6200be, #7730c5, #894dcb, #9b67d1, #ab81d6)", 
+        ]
+    const getBackground = () => {
+        const bgIndex = Math.floor(Math.random() * BG.length)
+        return BG[bgIndex]
     }
 
     const handleClickTask = (e) => {
@@ -26,7 +20,7 @@ export function TaskCard (props) {
     }
     return (
         <>
-            <div className={`task-card-wrapper ${getDifferenceDays()}`} onClick={(e) => handleClickTask(e)}>
+            <div style={{backgroundImage: getBackground()}} className={`task-card-wrapper`} onClick={(e) => handleClickTask(e)}>
                 <div className="card-title-wrapper">{props.title}</div>
                 <div className="card-description-wrapper">
                     {props.description}
