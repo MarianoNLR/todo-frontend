@@ -64,9 +64,9 @@ export function NewTaskForm ({setLoadingTaskList, user, toogleTaskForm}) {
                         <textarea rows={5} name="description" id="description" placeholder='Descripcion de la tarea' onChange={e => onChangeDescription(e)}></textarea>
                         <select name="priority" id="priority" onChange={e => onChangePriority(e)}>
                             <option value="Seleccionar" selected>Prioriodad</option>
-                            <option value="Alta">Alta</option>
-                            <option value="Media">Media</option>
-                            <option value="Baja">Baja</option>
+                            <option value="2">Alta</option>
+                            <option value="1">Media</option>
+                            <option value="0">Baja</option>
                         </select>
                         <input type="date" name="deadline" id="deadline" min={today} onChange={e => onChangeDeadline(e)}/>
                         <input type="submit" value="Guardar" onClick={(e)=> handleSubmitTaskForm(e)}/>
