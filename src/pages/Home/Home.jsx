@@ -35,7 +35,7 @@ export function Home () {
                 <div className="controls-wrapper">
                     <div className="order-by-wrapper">
                         <select name="order-by" id="order-by" className="order-by-select" onChange={(e) => handleOrderChange(e)}>
-                            <option value="">Ordenar</option>
+                            <option value="">Por defecto</option>
                             <option value="priority">Prioridad</option>
                             <option value="deadline">Fecha Limite</option>
                         </select>
