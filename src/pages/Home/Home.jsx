@@ -9,6 +9,7 @@ export function Home () {
     const [taskList, setTaskList] = useState([])
     const [taskFormIsVisible, setTaskFormIsVisible] = useState(false)
     const [loadingTaskList, setLoadingTaskList] = useState(true)
+    const [orderBy, setOrderBy] = useState('')
     const user = JSON.parse(window.localStorage.getItem('user'))
     useEffect(() => {
         if (loadingTaskList) {
@@ -33,12 +34,25 @@ export function Home () {
         console.log("Nueva Tarea")
     }
 
+    const handleOrderChange = (event) => {
+        setOrderBy(event.target.value);
+      };
+
     return (
         <>
             <main className="main-home">
-                <Button className="add-task-button" variant="contained" color="success" onClick={(e) => toggleTaskForm(e)}>
-                Nueva Tarea
-                </Button>
+                <div className="controls-wrapper">
+                    <div className="order-by-wrapper">
+                        <select name="order-by" id="order-by" className="order-by-select">
+                            <option value="">Ordenar</option>
+                            <option value="">Prioridad</option>
+                            <option value="">Fecha Limite</option>
+                        </select>
+                    </div>
+                    <Button className="add-task-button" variant="contained" color="success" onClick={(e) => toggleTaskForm(e)}>
+                    Nueva Tarea
+                    </Button>
+                </div>
                 <div className="task-list-container">
                     {taskList.length > 0 ?
                         taskList.map((item, index) => (

@@ -25,3 +25,26 @@
     align-self: flex-end;
     background-color: blueviolet !important;
 }
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-self: flex-end;
+}
+
+.order-by-wraper {
+    display: flex;
+}
+
+.order-by-select {
+    background-color: rgba(0, 0, 0, 0.322);
+    border: none;
+    border-bottom: 2px solid blueviolet;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.order-by-select option {
+    background-color: rgba(0, 0, 0, 0.171);
+}
