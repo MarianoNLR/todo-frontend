@@ -1,0 +1,56 @@
+.auth-page-main {
+    min-height: 100vh;
+    align-self: center;
+    justify-content: center;
+    flex: 1;
+    width: 80%;
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-wrapper {
+    border-radius: 1rem;
+    padding: 1rem;
+    background-color: rgba(96, 48, 150, 0.514);
+    width: 400px;
+    transition: all 1s linear;
+}
+
+.form-wrapper {
+    display: flex;
+    width: 400px;
+    overflow-x: hidden;
+}
+
+.login-active .login-form {
+    animation: swipeRight 1s forwards;
+}
+
+.register-active .signup-form {
+    animation: swipeLeft 1s forwards;
+}
+
+@keyframes swipeLeft {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes swipeRight {
+    from {
+        transform: translateX(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
