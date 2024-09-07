@@ -28,22 +28,26 @@ export function TaskList (props) {
     }
     
     return (
-        <div className="task-list-container">
-            {taskList.length > 0 ?
-                taskList.map((item, index) => (
-                    <TaskCard key={index}
-                    id={item.id}
-                    title={item.title}
-                    description={item.description}
-                    deadline={item.deadline}
-                    priority={item.priority}
-                    subtasks={item.subtasks}
-                    ></TaskCard>
-                ))
-            :
+        <>
+         
+            {taskList.length > 0 ? (
+                <div className="task-list-container">
+                    {taskList.map((item, index) => (
+                        <TaskCard key={index}
+                        id={item.id}
+                        title={item.title}
+                        description={item.description}
+                        deadline={item.deadline}
+                        priority={item.priority}
+                        subtasks={item.subtasks}
+                        ></TaskCard>
+                    ))}
+                </div>
+            ):(
             <h3>No Hay Tareas</h3>
-            }
-        </div>
+            )}
+        
+        </>
     )
 }
 
