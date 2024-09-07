@@ -2,7 +2,7 @@ import { Button } from "@mui/material"
 import { useEffect, useState } from 'react'
 import './TaskView.css'
 import api from '../../../api.js'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { SubtaskForm } from "../../components/SubtaskForm/SubtaskForm.jsx"
 import { SubtaskList } from "../../components/SubTaskList/SubTaskList.jsx"
 export function TaskView () {
@@ -11,6 +11,7 @@ export function TaskView () {
     const [task, setTask] = useState(null)
     const [loadingTask, setLoadingTask] = useState(true)
     const [subtaskFormIsVisible, setSubtaskFormIsVisible] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         if (loadingTask) {
@@ -39,7 +40,21 @@ export function TaskView () {
 
     const toggleSubtaskForm = () => {
         setSubtaskFormIsVisible(!subtaskFormIsVisible);
-    };
+    }
+
+    const handleDeleteTask = (e) => {
+        e.preventDefault()
+        api.delete(`/task/${taskId}`)
+        .then(res => {
+            console.log(res)
+            if (res.status === 200) {
+                navigate('/')
+            }
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }
  
     return (
         <>
@@ -53,6 +68,9 @@ export function TaskView () {
                         <p>{task.description}</p>
                         <p>{task.deadline.split("T")[0]}</p>
                     </div>
+                    <Button className="delete-task-button" variant="contained" color="error" onClick={(e) => handleDeleteTask(e)}>
+                    Eliminar
+                    </Button>
                 </div>
                 <SubtaskList subtasks={task.subtasks}></SubtaskList>
                 {subtaskFormIsVisible && 
